@@ -1,0 +1,12 @@
+#!/bin/bash
+#Domain
+if [ $# -eq 0 ]
+  then
+    echo "ERROR: No arguments supplied"
+    echo " "
+    echo "INFO: Webcrawl a site slow using wget. Use crawlf for fast usage"
+    echo "USAGE: please enter a domain ex. google.com"
+    echo " "
+fi
+# Download all webpage and links
+  wget --no-check-certificate -w2 --limit-rate=20K -erobots=off -r -p -U Mozilla $1
