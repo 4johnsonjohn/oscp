@@ -1,0 +1,21 @@
+#!/bin/bash
+#Domain
+if [ $# -eq 0 ]
+  then
+    echo "ERROR: No arguments supplied"
+    echo " "
+    echo "INFO: Print IPs for domains found from wget"
+    echo "USAGE: please enter a domain ex. google.com"
+    echo " "
+fi
+# Download landing page
+  wget --no-check-certificate $1 > /dev/null 2>&1 
+  #magic grep for urls and output unique urls
+  grep -o '[A-Za-z0-9_\.-]*\.*'$1 ./index.html | sort -u > url.txt
+  for url in $(cat url.txt);do
+        #print ips for urls
+	host $url | grep "has address" | cut -d " " -f4
+  done
+#cleanup
+rm  index.html
+rm url.txt
