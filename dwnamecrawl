@@ -1,0 +1,21 @@
+#!/bin/bash
+#Domain
+if [ $# -eq 0 ]
+  then
+    echo "ERROR: No arguments supplied"
+    echo " "
+    echo "INFO: webcrawl a site and prints outs all the urls associated "
+    echo "USAGE: please enter a domain ex. google.com"
+    echo " "
+fi
+# Download landing page
+  wget --no-check-certificate -w2 -np -N -nd -t1 -A '*.html' --limit-rate=20K -r -p -U Mozilla $1
+  #hayder help here need to grep all .html files
+  grep -o '[A-Za-z0-9_\.-]*\.*'$1 ./index.html | sort -u > url.txt
+  for url in $(cat url.txt);do
+        #print ips for urls
+	host $url | grep "has address" | cut -d " " -f4
+  done
+#cleanup
+rm index.html
+rm url.txt
