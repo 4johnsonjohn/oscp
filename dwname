@@ -1,0 +1,16 @@
+#!/bin/bash
+#Domain names
+if [ $# -eq 0 ]
+  then
+    echo "ERROR: No arguments supplied"
+    echo " "
+    echo "INFO: Print names for domains found from wget"
+    echo "USAGE: Please enter a domain ex. google.com"
+    echo " "
+fi
+#Get landing page
+  wget --no-check-certificate $1 > /dev/null 2>&1 
+#Find all unique urls
+  grep -o '[A-Za-z0-9_\.-]*\.*'$1 ./index.html | sort -u
+  rm index.html
+
