@@ -1,0 +1,13 @@
+#!/bin/bash
+#Domain
+if [ $# -eq 0 ]
+  then
+    echo "ERROR: No arguments supplied"
+    echo " "
+    echo "INFO: Webcrawl a site fast."
+    echo "WARNING: MIGHT GET BLACKLISTED"
+    echo "USAGE: please enter a domain ex. google.com"
+    echo " "
+fi
+# Download all pages with wget fast
+  wget --no-check-certificate -erobots=off -r -p -U Mozilla $1
