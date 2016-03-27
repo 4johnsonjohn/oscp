@@ -1,19 +1,4 @@
 #!/bin/bash
-REGEX="href=\".*:\/\/[A-Za-z0-9_\.-]*\.*\/.*\".*"
-while getopts ":a" opt; do
-  case $opt in
-    h)
-      echo "-f to look for urls in given domain only" >&2
-      stop
-      ;;
-    f)
-      REGEX="href=\".*:\/\/[A-Za-z0-9_\.-]*\.*\/.*\".*"
-      ;;
-    \?)
-      echo "Invalid option: -$OPTARG" >&2
-      ;;
-  esac
-done
 
 if [ $# -eq 0 ]
   then
@@ -23,9 +8,14 @@ if [ $# -eq 0 ]
     echo "USAGE: please enter a domain ex. google.com"
     echo " "
 fi
-  # Download landing page
-  wget --no-check-certificate -np -N -nd -t1 -A.html -r -p -U Mozilla $1 -P ./tmp/ > /dev/null 2>&1
-  grep -o 'href=".*:\/\/[A-Za-z0-9_\.-]*\.*\/.*".*' ./tmp/* | cut -d'"' -f2 | sort -u
-  
+if [ $1 = "-f" ]
+ then
+   # Download landing page
+   wget --no-check-certificate -np -N -nd -t1 -A.html -r -p -U Mozilla $2 -P ./tmp/ > /dev/null 2>&1
+   grep -o 'href=".*:\/\/[A-Za-z0-9_\.-]*\.*\/.*".*' ./tmp/* | cut -d'"' -f2 | sort -u
+else
+   wget --no-check-certificate -np -N -nd -t1 -A.html -r -p -U Mozilla $1 -P ./tmp/ > /dev/null 2>&1
+   grep -o 'href=".*:\/\/[A-Za-z0-9_\.-]*\.*\/.*".*' ./tmp/* | cut -d'"' -f2 | cut -d "/" -f3 | sort -u
+fi
 #cleanup
 rm -rf ./tmp/
