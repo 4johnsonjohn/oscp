@@ -1,10 +1,18 @@
 #!/bin/bash
+if [ $# -eq 0 ]
+  then
+    echo "ERROR: No arguments supplied"
+    echo " "
+    echo "INFO: Print active IPs within a range using ping ICMP"
+    echo "USAGE: Please enter ip range ex 192.168.1 10 250"
+    echo " "
+fi
     for i in `seq ${2} ${3}`
     do
-        ping -c 1 ${1}.${i} | grep "bytes from" | cut -d" " -f 4 |cut -d":" -f1 &
-        if [ $? -eq 0 ]; then
-            echo "${1}.${i} responded."
-        else
-            echo "${1}.${i} did not respond."
-        fi
-    done
+        ping -c 1 ${1}.${i} | grep "bytes from" | awk '{ print $4 }' | sort | uniq | cut -d":" -f 1 & 
+ #       if [ $? -eq 0 ]; then
+ #           echo "${1}.${i} responded."
+ #       else
+ #           echo "${1}.${i} did not respond."
+ #       fi
+   done
