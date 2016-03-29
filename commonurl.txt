@@ -1,0 +1,12 @@
+www
+ftp
+mail
+owa
+proxy
+router
+admin
+ww2
+firewall
+mx
+pop3
+iwww
