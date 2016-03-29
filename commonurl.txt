@@ -5,7 +5,7 @@ owa
 proxy
 router
 admin
-ww2
+www2
 firewall
 mx
 pop3

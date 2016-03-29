@@ -9,6 +9,7 @@ if [ $# -eq 0 ]
 fi
     for i in `seq ${2} ${3}`
     do
+#	echo $1
         ping -c 1 ${1}.${i} | grep "bytes from" | awk '{ print $4 }' | sort | uniq | cut -d":" -f 1 & 
  #       if [ $? -eq 0 ]; then
  #           echo "${1}.${i} responded."
