@@ -2,8 +2,9 @@
 # Simple zone Transfer Bash Script
 # $1 is the first argument given after the bash scripts
 # Check if argument was given, if not, print usage
+# For more advance scripts check dnsrecon and dnsenum
 
-if [ -z "$1"]; then
+if [ -z "$1" ]; then
 	echo "[*] Simple Zone transfer script"
 	echo "[*] Usage: $0 <domain name>"
 	exit 0
