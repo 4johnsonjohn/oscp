@@ -1,0 +1,11 @@
+PORT 139 445 NETBIOS
+nmap -p 139,445 $IP.200-254 --open
+nbtscan ----program for scanning NETBIOS info
+nbtscan $IP.200-254
+rpclient -U "" $ip #null session for netbios remote procedure call
+rpcclient commands: -srvinfo enumdomains getdompwinfo
+enum4linux -v $IP # extensive netbios enumeration tool
+ls -l /usr/share/nmap/scripts/ | grep smb # returns all nmap scripts
+nmap -p 139,445 --script smb-enum-user $IP #nmap script that enumerates smb users
+nmap -p 139,445 --script smb-check-vulns --scripts-args=unsafe=1 $ip # nmap script to check vulnerable SMB
+
