@@ -1,0 +1,7 @@
+inurl:'/control/userimage.html' webcam
+site:microsoft.com filetype:ppt "penetration testing" finding files in specific sites
+site:microsoft.com -site:www.microsoft.com finding microsoft.com searches such ass xbox.microsoft.com by using -
+intitle: 'VNC viewer for JAVA' for vnc viewer services
+inurl:php? intext:CHARACTER_SETS,COLLATIONS intitle:phpmyadmin phpmyadmin       vuln
+intitle:"-N3t" filetype:php undetectable          known php backdoor
+

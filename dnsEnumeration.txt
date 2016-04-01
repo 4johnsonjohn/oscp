@@ -1,0 +1,7 @@
+host dig nslookup
+  329  host -t ns megacorpone.com	 name server
+  330  host -t mx megacorpone.com	mail server
+  331  host www.megacorpone.com		webserver not the difference for 331 and 332
+  332  host idontexist.megacorpone.com
+
+
