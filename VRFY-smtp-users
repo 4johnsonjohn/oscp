@@ -1,0 +1,3 @@
+#!/bin/bash
+
+for users in $(cat users.txt); do echo VRFY $users | nc -nv -w 1 $1 25 2>/dev/null | grep ^"250";done
