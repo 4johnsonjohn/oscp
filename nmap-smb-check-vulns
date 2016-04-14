@@ -1,2 +1,2 @@
 #!/bin/bash
-nmap -p 139,445 --script smb-check-vulns --script-args=unsafe=1 
+nmap -p 139,445 --script smb-check-vulns --script-args=unsafe=1 $1

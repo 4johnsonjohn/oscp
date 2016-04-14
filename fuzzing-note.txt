@@ -1,0 +1,11 @@
+create a unique patter using
+/usr/share/metasploit-framework/tools/pattern_create.rb 2700 or whatever
+find unique pattern with
+/usr/share/metasploit-framework/tools/pattern_offset.rb "PATTERN HERE"
+using mona find a dll that has no memory protectionlike aslr or dep
+mona immunity script can search any given opcode in a certain memory range
+find specific bytes in memory that make up opcode jmp esp instruction
+this script will print out the opcode of any instruction we provide it
+/usr/share/metasploit-framework/tools/nasm-shell.rb
+then find it using mona
+!mona find -s "\xff\xe4"

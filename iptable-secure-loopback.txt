@@ -1,0 +1,3 @@
+open this ports only for localhost
+iptables -A INPUT -p TCP --destination-port 13327 \! -d 127.0.0.1 -j DROP
+iptables -A INPUT -p TCP --destination-port 4444 \! -d 127.0.0.1 -j DROP

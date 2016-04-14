@@ -1,0 +1,12 @@
+SNMP
+Simple Network Management Protocol (SNMP) is an Internet-standard protocol for collecting and organizing information about managed devices on IP networks and for modifying that information to change device behavior.
+SNMP SCAN NMAP
+nmap -sU --open -p 161 192.168.31.200-254 --open
+Common SNMP community names
+public
+private
+manager
+onesixtyone does this
+onesixtyone -c community.txt -i hosts.txt
+use 161-snmp-range-scan communtiy.txt ip 200 250
+

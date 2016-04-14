@@ -1,0 +1,4 @@
+connect to smtp server
+nc -nv ip 25
+reply 250 mean user exist
+reply 550 means user does not exit
