@@ -1,4 +1,6 @@
 #!/usr/bin/python
+#takes an ip as a parameter
+#verify users in users.txt from smtp server
 
 import socket
 import sys
