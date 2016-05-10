@@ -1,4 +1,5 @@
 #!/bin/bash
+# the user account is offsec
 # rerun this script allow changing password for pure-ftpd
 groupadd ftpgroup
 useradd -g ftpgroup -d /dev/null -s /etc ftpuser
