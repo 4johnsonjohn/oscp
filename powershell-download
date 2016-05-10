@@ -3,7 +3,7 @@ dont forget to start apache2 server
 file created is call wget.ps1
 
 execute
-powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive - NoProfile -File wget.ps1
+powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -File wget.ps1
 ####################################
 ######################################
  
