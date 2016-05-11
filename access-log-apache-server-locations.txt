@@ -1,0 +1,44 @@
+http://www.codeasite.com/index.php/linux-a-apache/94-how-do-i-find-apache-http-server-log-files
+
+ How do I find Apache http server log files?
+
+From : http://www.cyberciti.biz/faq/apache-logs/
+
+There are two type of apache httpd server log files:
+Error Logs
+
+All apache errors / diagnostic information other errors found while serving requests are logged to this file. Location of error log is set using ErrorLog directive. If there is any problem, you should first take a look at this file using cat, grep or any other UNIX / Linux text utilities. This apache log
+
+file often contain details of what went wrong and how to fix it. Default error log file location:
+
+    RHEL / Red Hat / CentOS / Fedora Linux Apache error file location - /var/log/httpd/error_log
+    Debian / Ubuntu Linux Apache error log file location - /var/log/apache2/error.log
+    FreeBSD Apache error log file location - /var/log/httpd-error.log
+
+To find exact apache log file location, you can use grep command:
+# grep ErrorLog /usr/local/etc/apache22/httpd.conf
+# grep ErrorLog /etc/apache2/apache2.conf
+# grep ErrorLog /etc/httpd/conf/httpd.conf
+Sample output:
+
+# ErrorLog: The location of the error log file.
+# If you do not specify an ErrorLog directive within a 
+ErrorLog "/var/log/httpd-error.log"
+
+Access Logs
+
+Apache server records all incoming requests and all requests processed to a log file. The format of the access log is highly configurable. The location and content of the access log are controlled by the CustomLog directive. Default apache access log file location:
+
+    RHEL / Red Hat / CentOS / Fedora Linux Apache access file location - /var/log/httpd/access_log
+    Debian / Ubuntu Linux Apache access log file location - /var/log/apache2/access.log
+    FreeBSD Apache access log file location - /var/log/httpd-access.log
+
+To find exact apache log file location, you can use grep command:
+# grep CustomLog /usr/local/etc/apache22/httpd.conf
+# grep CustomLog /etc/apache2/apache2.conf
+# grep CustomLog /etc/httpd/conf/httpd.conf
+Sample output:
+
+  # a CustomLog directive (see below).
+    #CustomLog "/var/log/httpd-access.log" common
+    CustomLog "/var/log/httpd-access.log" combined
