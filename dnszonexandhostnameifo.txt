@@ -1,0 +1,7 @@
+first thing scan for the dns server basically machines running port 53
+nmap --open -PN -p 53 192.168.15.200-254
+once you find the machine that runs the dns server add it to
+once you find it add the following line 'nameserver %ip%'
+vim /etc/resolv.conf 
+~/scripts# dnsrecon -r 192.168.15.0/24
+
