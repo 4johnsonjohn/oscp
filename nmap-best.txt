@@ -1,0 +1,14 @@
+for i in $(nmap -sP 192.168.15.200-254 | grep 192 | cut -d " " -f 5); do nmap -v --open -PN -p0- -A -sV --script= "(default or safe or discovery or http-*" -oA $1 $1 & done;
+
+
+
+root@kali:~/recon# for i in $(nmap -sP 192.168.15.200-210 | grep 192 | cut -d " " -f 5); do nmap -v --open -PN -p0- -A -sV --script="default or safe or discovery or http-*" --webxml -oA $i $i & done
+******* PLEASE UPDATE recon has 200-10 ****************
+
+
+or i in $(nmap -sP 192.168.15.200-254 | grep 192 | cut -d " " -f 5); do nmap -v --open -PN -p0- -A -sV --script="default or safe or discovery or http-*" -oA $1 --webxml $1 & done
+
+FINALL
+
+for i in $(nmap -sP 192.168.15.202-254 | grep 192 | cut -d " " -f 5); do nmap -v --open -PN -sTU -T4 --top-ports 1000 -A -sV --webxml -oA $i $i; done
+

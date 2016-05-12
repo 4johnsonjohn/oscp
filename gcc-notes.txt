@@ -1,0 +1,2 @@
+compile options for older kernels 32bit
+gcc -m32 -Wl,--hash-style=both (infile.c) -o (outfile)
